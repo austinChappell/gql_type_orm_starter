@@ -3,7 +3,6 @@ import { createConnection } from "typeorm";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 
-import { BookResolver } from "./resolvers/BookResolver";
 import { UserResolver } from "./resolvers/UserResolver";
 import { AuthResolver } from "./resolvers/AuthResolver";
 import { authChecker } from "./utils/authChecker";
@@ -18,7 +17,6 @@ async function main() {
     authChecker,
     resolvers: [
       AuthResolver,
-      BookResolver,
       PostResolver,
       UserResolver,
     ]
