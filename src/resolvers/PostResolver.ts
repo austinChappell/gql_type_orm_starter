@@ -23,7 +23,7 @@ export class PostResolver {
   @Authorized()
   @Query(() => [Post])
   posts() {
-    return Post.find();
+    return Post.find({ relations: ['user'] });
   }
 
   @Authorized()
@@ -67,10 +67,5 @@ export class PostResolver {
     await Post.delete({ id });
 
     return true;
-  }
-
-  @FieldResolver()
-  user(@Root() post: Post) {
-    return User.findOne(post.user);
   }
 }
