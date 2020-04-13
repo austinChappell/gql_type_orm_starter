@@ -8,6 +8,7 @@ import { UserResolver } from "./resolvers/UserResolver";
 import { AuthResolver } from "./resolvers/AuthResolver";
 import { authChecker } from "./utils/authChecker";
 import app from "./app";
+import { PostResolver } from "./resolvers/PostResolver";
 
 const { PORT = '4000' } = process.env;
 
@@ -18,6 +19,7 @@ async function main() {
     resolvers: [
       AuthResolver,
       BookResolver,
+      PostResolver,
       UserResolver,
     ]
   });
