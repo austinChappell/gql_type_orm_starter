@@ -1,6 +1,6 @@
 {
-  "type": "sqlite",
-  "database": "./db.sqlite3",
+  "type": "postgres",
+  "database": "typeorm_dev",
   "entities": ["./src/models/*.ts"],
   "synchronize": true,
   "logging": true

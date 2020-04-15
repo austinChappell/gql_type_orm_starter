@@ -4,6 +4,7 @@ import { CreatePostInput } from "../inputs/CreatePostInput";
 import { User } from "../models/User";
 import { Context } from "../types/context";
 import { UpdatePostInput } from "../inputs/UpdatePostInput";
+import { userLoader } from "../dataloaders";
 
 async function verifyOwnership(ctx: Context, postId: string) {
   const user = await User.findOne({ id: ctx.req.userId });
@@ -23,7 +24,7 @@ export class PostResolver {
   @Authorized()
   @Query(() => [Post])
   posts() {
-    return Post.find({ relations: ['user'] });
+    return Post.find();
   }
 
   @Authorized()
@@ -67,5 +68,14 @@ export class PostResolver {
     await Post.delete({ id });
 
     return true;
+  }
+
+  @FieldResolver()
+  user(@Root() post: Post) {
+    console.log('userId : ', post.userId)
+
+    return userLoader.load(post.userId);
+
+    return User.findOne({ id: post.userId })
   }
 }

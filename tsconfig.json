@@ -1,11 +1,67 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es5",
+      "es6"
+    ],
     "emitDecoratorMetadata": true,
-    "strictPropertyInitialization": false
-  }
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "noImplicitAny": false, // TODO: set this to true
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "dataloaders": [
+        "src/dataloaders"
+      ],
+      "dataloaders/*": [
+        "src/dataloaders/*"
+      ],
+      "inputs": [
+        "src/inputs"
+      ],
+      "inputs/*": [
+        "src/inputs/*"
+      ],
+      "models": [
+        "src/models"
+      ],
+      "models/*": [
+        "src/models/*"
+      ],
+      "resolvers": [
+        "src/resolvers"
+      ],
+      "resolvers/*": [
+        "src/resolvers/*"
+      ],
+      "types": [
+        "src/types"
+      ],
+      "types/*": [
+        "src/types/*"
+      ],
+      "utils": [
+        "src/utils"
+      ],
+      "utils/*": [
+        "src/utils/*"
+      ],
+      "*": [
+        "node_modules/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "files": [
+    "src/types/custom.d.ts"
+  ]
 }

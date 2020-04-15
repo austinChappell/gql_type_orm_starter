@@ -1,5 +1,5 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { ObjectType, Field, ID, Int } from "type-graphql";
 import { User } from "./User";
 
 @Entity()
@@ -17,7 +17,11 @@ export class Post extends BaseEntity {
   @Column()
   title: string;
 
+  @Column()
+  userId: string;
+
   @Field(() => User)
   @ManyToOne(type => User, user => user.posts)
+  @JoinColumn({ name: "userId" })
   user: User;
 }
